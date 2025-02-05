@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter</title>
+</head>
+<body>
+    <script>
+        function convertKgToLb(kg) {
+            return kg / 0.45359237;
+        }
+
+        function convertLbToKg(lb) {
+            return lb * 0.45359237;
+        }
+
+        let userChoice;
+
+        do {
+            userChoice = parseInt(prompt("1 for kg to lb, or 2 for converting lb to kg, or 3 to exit:"));
+
+            if (userChoice != 1 && userChoice != 2 && userChoice != 3) {
+                alert("Invalid input. Please choose 1, 2, or 3.");
+                continue; 
+            }
+
+            if (userChoice == 1 || userChoice == 2) {
+                let userInput;
+
+                do {
+                    userInput = prompt("Enter a numeric value for the mass:");
+                    userInput = parseFloat(userInput); 
+                } while (isNaN(userInput)); 
+
+                switch (userChoice) {
+                    case 1: 
+                        let lb = convertKgToLb(userInput);
+                        document.write("<p>" + userInput + " kg is equal to " + lb.toFixed(3) + " lb</p>");
+                        break;
+
+                    case 2: 
+                        let kg = convertLbToKg(userInput);
+                        document.write("<p>" + userInput + " lb is equal to " + kg.toFixed(3) + " kg</p>");
+                        break;
+                }
+            }
+        } while (userChoice != 3); 
+
+        document.write("<p>Thank you for using the converter!</p>");
+    </script>
+</body>
+</html>
